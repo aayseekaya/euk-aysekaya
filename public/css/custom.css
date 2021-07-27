@@ -1,0 +1,240 @@
+.jstree-default .jstree-wholerow-clicked, .jstree-default .jstree-wholerow-clicked{
+    background: #fff;
+}
+.jstree-wholerow-ul {
+    border: 1px solid #ebedf2;
+    padding: 15px;
+}
+.image-box .close-button{
+    float: right;
+    margin: 3px;
+}
+.image-box {
+    width: 100%;
+    height:150px;
+    background: #eceef3;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+    background-size: cover;
+}
+.image-box .select-image{
+    content: "Resim Seç";
+    position: absolute;
+    background: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color:#555;
+    opacity: 0;
+    transition: all .3s;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.image-box .select-image:hover{
+    text-decoration: none;
+}
+.image-box:hover .select-image{
+    opacity: 1;
+}
+.image-box .image-back {
+    position: absolute;
+    max-width: 90%;
+    max-height: 90%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    left: 50%;
+    top:50%;
+}
+.image-box .pdf-back {
+    position: absolute;
+    max-width: 90%;
+    max-height: 90%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    left: 50%;
+    top:50%;
+}
+.image-box .pdf-back.nopdf {
+    display: none;
+}
+.gallery {
+/*    display: contents;*/
+    width: 100%;
+}
+/*.listItems{
+    display: contents;
+}*/
+.targetInput {
+    z-index: 1;
+    position: absolute;
+    display: none;
+}
+.image-box-add {
+    margin-top: 50px;
+}
+.m-topbar .m-topbar__nav.m-nav > .m-nav__item.m-topbar__quick-actions.m-topbar__quick-actions--img.m-dropdown--arrow .m-dropdown__arrow {
+    color: #ffffff;
+}
+.m-aside-menu.m-aside-menu--skin-light .m-menu__nav > .m-menu__item.m-menu__item--active > .m-menu__link {
+    background-color: #f2f3f8;
+}
+.m-nav-grid .m-nav-grid__row .m-nav-grid__item .m-nav-grid__text {
+    color: #363946;
+}
+
+.m-aside-menu.m-aside-menu--skin-light .m-menu__nav > .m-menu__item .m-menu__submenu .m-menu__item.m-menu__item--active > .m-menu__link {
+    background-color: #042d85d1;
+}
+.m-aside-menu.m-aside-menu--skin-light .m-menu__nav > .m-menu__item .m-menu__submenu .m-menu__item.m-menu__item--active > .m-menu__link .m-menu__link-icon {
+    color: #ffffff;
+}
+.m-aside-menu.m-aside-menu--skin-light .m-menu__nav > .m-menu__item .m-menu__submenu .m-menu__item.m-menu__item--active > .m-menu__link .m-menu__link-text {
+    color: #ffffff;
+}
+ol.list {
+    width: 100%;
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    border: 1px solid #e9e9e9;
+    border-top: 0;
+}
+ol.list li {
+    width: 100%;
+    display: block;
+    line-height: 55px;
+    position: relative;
+    border-top: 1px solid #E9E9E9;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+ol.list li ol {
+    margin-right: -15px;
+    margin-top: 5px;
+}
+ol.list li ol li {
+    border-left: 1px solid #E9E9E9;
+/*    background: #f3f3f3;*/
+/*    padding-bottom: 5px;*/
+}
+ol.list li ol li ol li{
+    background: #ffffff;
+    color: #333;
+    padding-bottom: 0;
+}
+ol.list li .islem {
+    float: right;
+    display: block;
+}
+ol.list li .islem a{
+    margin-left: 5px;
+}
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: #484848;
+    border-color: #c5c5c5;
+}
+.show-response {
+    opacity: 1 !important;
+}
+.item-move {
+    margin-right: 15px;
+}
+/*.m-datatable__body {
+    border: .1px solid #ebedf2;
+}*/
+i.lang {
+    content: "";
+    width: 25px;
+    height: 20px;
+    background-size: cover;
+    position: relative;
+    display: block !important;
+    margin: 9px 8px;
+    background-repeat: no-repeat;
+    border: 0.1px solid #00000054;
+    opacity: .7;
+}
+i.lang.tr {
+    background-image: url(../images/tr.svg);
+}
+i.lang.en {
+    background-image: url(../images/gb.svg);
+}
+i.lang.ru {
+    background-image: url(../images/ru.svg);
+}
+i.lang.de {
+    background-image: url(../images/de.svg);
+}
+
+.turkish,.english,.russian {
+    display: none;
+}
+.m-widget4__img.m-widget4__img--pic {
+    width: 15rem;
+    height: 10rem;
+    background: #f5f5f5;
+    position: relative;
+    display: block !important;
+}
+.m-widget4 .m-widget4__item .m-widget4__img.m-widget4__img--pic img {
+    max-width: 15rem;
+    max-height: 10rem;
+    width: auto;
+    border-radius: 0;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+.m-widget4 {
+    display: inline-block;
+}
+
+.m-widget4 .m-widget4__item {
+    float: left;
+}
+.search-box {
+    margin-top: 10px;
+}
+.m-aside-menu.m-aside-menu--skin-light .m-menu__nav > .m-menu__item.m-menu__item--active > .m-menu__link .m-menu__link-icon {
+    color: #042d85;
+}
+.m-aside-menu.m-aside-menu--skin-light .m-menu__nav > .m-menu__item.m-menu__item--active > .m-menu__link .m-menu__link-text {
+    font-weight: 600;
+    color: #042d85;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #042d85;
+    border-color: #042d85;
+}
+.btn.m-btn--air.btn-default.focus, .btn.m-btn--air.btn-default:focus, .btn.m-btn--air.btn-default:hover:not(:disabled):not(.active), .btn.m-btn--air.btn-secondary.focus, .btn.m-btn--air.btn-secondary:focus, .btn.m-btn--air.btn-secondary:hover:not(:disabled):not(.active) {
+    -webkit-box-shadow: 0px 3px 20px 0px rgba(113, 106, 202, 0.26) !important;
+    -moz-box-shadow: 0px 3px 20px 0px rgba(113, 106, 202, 0.26) !important;
+    box-shadow: 0px 3px 20px 0px rgba(113, 106, 202, 0.26) !important;
+    background: #042d85 !important;
+    color: #ffffff !important;
+    border-color: #042d85 !important;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #003667;
+    border-color: #042d85;
+}
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary, .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary {
+    background-color: #042d85;
+    border-color: #042d85;
+    color: #ffffff;
+}

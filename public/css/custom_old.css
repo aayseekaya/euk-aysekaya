@@ -1,0 +1,186 @@
+.jstree-default .jstree-wholerow-clicked, .jstree-default .jstree-wholerow-clicked{
+    background: #fff;
+}
+.jstree-wholerow-ul {
+    border: 1px solid #ebedf2;
+    padding: 15px;
+}
+.image-box .close-button{
+    float: right;
+    margin: 3px;
+}
+.image-box {
+    width: 100%;
+    height:150px;
+    background: #eceef3;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+/*    background: url("../images/noimage.png") no-repeat center center;*/
+    background-size: cover;
+}
+.image-box .select-image{
+    content: "Resim Seç";
+    position: absolute;
+    top: 60px;
+    left: 65px;
+    background: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color:#555;
+    opacity: 0;
+    transition: all .3s;
+}
+.image-box .select-image:hover{
+    text-decoration: none;
+}
+.image-box:hover .select-image{
+    opacity: 1;
+}
+.image-box .image-back {
+    position: absolute;
+    max-width: 90%;
+    max-height: 90%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    left: 50%;
+    top:50%;
+}
+.gallery {
+    display: contents;
+}
+.listItems{
+    display: contents;
+}
+.targetInput {
+    z-index: 1;
+    position: absolute;
+    display: none;
+}
+.image-box-add {
+    margin-top: 50px;
+}
+.m-topbar .m-topbar__nav.m-nav > .m-nav__item.m-topbar__quick-actions.m-topbar__quick-actions--img.m-dropdown--arrow .m-dropdown__arrow {
+    color: #ffffff;
+}
+.m-aside-menu.m-aside-menu--skin-light .m-menu__nav > .m-menu__item.m-menu__item--active > .m-menu__link {
+    background-color: #f2f3f8;
+}
+.m-nav-grid .m-nav-grid__row .m-nav-grid__item .m-nav-grid__text {
+    color: #363946;
+}
+ol.list {
+    width: 100%;
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    border: 1px solid #e9e9e9;
+    border-top: 0;
+}
+ol.list li {
+    width: 100%;
+    display: block;
+    line-height: 45px;
+    position: relative;
+    border-top: 1px solid #E9E9E9;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+ol.list li ol {
+    margin-right: -15px;
+/*    margin-bottom: 10px;*/
+    margin-top: 5px;
+}
+ol.list li ol li {
+    border-left: 1px solid #E9E9E9;
+    background: #f3f3f3;
+    /* color: #fff; */
+    padding-bottom: 5px;
+}
+ol.list li ol li ol li{
+    background: #ffffff;
+    color: #333;
+    padding-bottom: 0;
+}
+ol.list li .islem {
+    float: right;
+    display: block;
+}
+ol.list li .islem a{
+    margin-left: 5px;
+}
+
+.item-move {
+    margin-right: 15px;
+}
+.m-datatable__body {
+    border: .1px solid #ebedf2;
+}
+i.lang {
+    content: "";
+    width: 25px;
+    height: 20px;
+    background-size: cover;
+    position: relative;
+    display: block !important;
+    margin: 9px 8px;
+    background-repeat: no-repeat;
+    border: 0.1px solid #00000054;
+    opacity: .7;
+}
+i.lang.tr {
+    background-image: url(../images/tr.svg);
+}
+i.lang.en {
+    background-image: url(../images/gb.svg);
+}
+i.lang.ru {
+    background-image: url(../images/ru.svg);
+}
+i.lang.de {
+    background-image: url(../images/de.svg);
+}
+/*.m-form--label-align-right .m-input-icon.m-input-icon--left {
+    margin-top: 10px !important;
+}*/
+.m-input-icon.m-input-icon--left {
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+.turkish,.english,.russian {
+    display: none;
+}
+.m-widget4__img.m-widget4__img--pic {
+    width: 15rem;
+    height: 10rem;
+    background: #f5f5f5;
+    position: relative;
+    display: block !important;
+}
+.m-widget4 .m-widget4__item .m-widget4__img.m-widget4__img--pic img {
+    max-width: 15rem;
+    max-height: 10rem;
+    width: auto;
+    border-radius: 0;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+.m-widget4 {
+    display: inline-block;
+}
+
+.m-widget4 .m-widget4__item {
+    float: left;
+}
+/*
+.m-form--label-align-right.top-buttons{
+    margin-top: -85px;
+    margin-bottom: 50px;
+}*/
