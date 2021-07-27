@@ -7,6 +7,7 @@ use Auth;
 use Redirect;
 use App\User;
 use App\Kinds;
+use App\Http\Controllers\BaseController;
 class LoginController extends Controller
 {
     /**
@@ -29,7 +30,7 @@ class LoginController extends Controller
             $result = Kinds::orderby("order","ASC")->get();
             return view('kinds.list',["result"=>$result]);
         } else {
-            return Core::redirect("back","Giriş Yapılamadı","error");
+            return BaseController::redirect("back","Giriş Yapılamadı","error");
         }
     }
 

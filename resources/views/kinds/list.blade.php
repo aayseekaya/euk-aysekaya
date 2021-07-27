@@ -80,7 +80,7 @@
                                                     <a href="#" class="delete-button m-portlet__nav-link btn m-btn btn-secondary m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-laptop"></i></a>
                                                 @endif
 
-                                                <a href="<?php echo env("APP_URL")."/admin/kinds/detail/".$value["id"];?>" class="edit-button m-portlet__nav-link btn m-btn btn-primary m-btn--icon m-btn--icon-only m-btn--pill"><i><i class="la la-share-square"></i></i></a>  
+                                                <a href="<?php echo env("APP_URL")."/admin/kinds/".$value["id"];?>" class="edit-button m-portlet__nav-link btn m-btn btn-primary m-btn--icon m-btn--icon-only m-btn--pill"><i><i class="la la-share-square"></i></i></a>  
                                                 <a href="<?php echo env("APP_URL")."/admin/kinds/edit/".$value["id"];?>" class="edit-button m-portlet__nav-link btn m-btn btn-primary m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
                                                 <a href="<?php echo env("APP_URL")."/admin/kinds/delete/".$value["id"];?>" class="delete-button m-portlet__nav-link btn m-btn btn-danger m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-trash"></i></a>
                                             </div>
@@ -106,7 +106,7 @@
     <script>
         jQuery(document).ready(function(){
             imageUpload("#single","imageurl");
-            shortFunc($('.sortable'),'/admin/kinds2/order');
+            shortFunc($('.sortable'),'/admin/kinds/order');
             function shortFunc (element, url) {
                 element.nestedSortable({
                     axis: 'y',

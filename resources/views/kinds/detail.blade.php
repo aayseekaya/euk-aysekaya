@@ -51,7 +51,7 @@
                             </label>
                             <div class="col-lg-10 col-md-9 col-sm-12">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <textarea name="description_tr" rows="6" placeholder="Açıklama" class="form-control col-md-12"><?php echo @$result["description_tr"]?></textarea>
+                                    <textarea name="content" rows="6" placeholder="Açıklama" class="form-control col-md-12"><?php echo @$result["content"]?></textarea>
                                     
                                 </div>
                             </div>

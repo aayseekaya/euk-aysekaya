@@ -25,15 +25,8 @@
                                 </div>
                             </div>
                             <div class="col-xl-4 order-1 order-xl-2 m--align-right">
-                                <a target="_blank" href="<?php echo env("APP_URL");?>/admin/kinds/export" class="btn btn-secondary m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
-                                    <span>
-                                        <div class="login login_in"></div>
-                                        <span>
-                                            Aktivite Katılım Listesi
-                                        </span>
-                                    </span>
-                                </a>
-                                <a href="{{env("APP_URL")}}/admin/kinds/add" class="btn btn-primary m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
+                                
+                                <a href="<?php echo env("APP_URL")."/admin/kinds/".$result["kinds_id"]."/add";?>"  class="btn btn-primary m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
                                     <span>
                                         <i class="flaticon-plus"></i>
                                         <span>
@@ -67,7 +60,7 @@
                                 <div class="m-portlet__body" style="padding: 0;">
                                     <ol class="list sortable">
                                         <?php
-                                        foreach ($result as $key => $value) {
+                                        foreach ($result["items"] as $key => $value) {
                                         ?>
                                         <li id="list_<?php echo $value['id']; ?>">
                                             <strong class="item-move"><a href="#" class=" m-portlet__nav-link btn m-btn btn-secondary m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-arrows"></i></a></strong>
@@ -80,7 +73,7 @@
                                                     <a href="#" class="delete-button m-portlet__nav-link btn m-btn btn-secondary m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-laptop"></i></a>
                                                 @endif
 
-                                                <a href="<?php echo env("APP_URL")."/admin/kinds/edit/".$value["id"];?>" class="edit-button m-portlet__nav-link btn m-btn btn-primary m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
+                                                <a href="<?php echo env("APP_URL")."/admin/kinds/".$value["kinds_id"]."/edit/".$value["id"];?>" class="edit-button m-portlet__nav-link btn m-btn btn-primary m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
                                                 <a href="<?php echo env("APP_URL")."/admin/kinds/delete/".$value["id"];?>" class="delete-button m-portlet__nav-link btn m-btn btn-danger m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-trash"></i></a>
                                             </div>
                                         </li>
@@ -105,7 +98,7 @@
     <script>
         jQuery(document).ready(function(){
             imageUpload("#single","imageurl");
-            shortFunc($('.sortable'),'/admin/kinds2/order');
+            shortFunc($('.sortable'),'/admin/subtypes/order');
             function shortFunc (element, url) {
                 element.nestedSortable({
                     axis: 'y',

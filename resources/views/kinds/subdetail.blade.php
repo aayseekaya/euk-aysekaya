@@ -45,32 +45,88 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">
                                 Açıklama
                             </label>
                             <div class="col-lg-10 col-md-9 col-sm-12">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <textarea name="description_tr" rows="6" placeholder="Açıklama" class="form-control col-md-12"><?php echo @$result["description_tr"]?></textarea>
+                                    <textarea name="content" rows="6" placeholder="Açıklama" class="form-control col-md-12"><?php echo @$result["content"]?></textarea>
                                     
                                 </div>
                             </div>
                         </div>
                         <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">
-                                Türkçe
+                                Anket Sırası
+                            </label>
+                            <div class="col-md-4">
+                                <div>
+                                    <input type="text" name="order" value="{{@$result['order']}}" class="form-control m-input" placeholder="Anket Adı">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <label class="col-form-label col-md-2">
+                                Resim TR
                             </label>
                             <div class="col-md-10 row">
-                                <div id="multi" class="gallery">
-                                   
-                                    <div class="col-md-3">
-                                        <div class="image-box-add">
-                                            <a href="#" class="add-image-button m-portlet__nav-link btn m-btn btn-primary m-btn--icon m-btn--pill"><i class="la la-plus"></i> Resim Ekle</a>
+                                <div id="single" class="gallery">
+                                    <div class="listItems">
+                                        <div class="col-md-3">
+                                            <div class="image-box">
+                                                <img class="image-back" src="{{@$imageUrl}}">
+                                                <a href="#" class="select-image">Resmi Değiştir</a>
+                                                <input class="image-input d-none" accept="image/*" type="file"/>
+                                                <input type="hidden" value="{{@$imageUrl}}" name="imageUrl" class="targetInput">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                                                 
+                        <div class="form-group m-form__group row">
+                            <label class="col-form-label col-md-2">
+                                Video
+                            </label>
+                            <div class="col-md-10 row">
+                                <div id="single" class="gallery">
+                                    <div class="listItems">
+                                    <div class="col-md-3">
+                                    <div class="image-box">
+                                                <img class="image-back" src="{{@$video}}">
+                                                <a href="#" class="select-image">Video Değiştir</a>
+                                                <input class="image-input d-none" accept="video/*" type="file"/>
+                                                <input type="hidden" value="{{@$video}}" name="video" class="targetInput">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+                            <label class="col-form-label col-md-2">
+                                Görsel
+                            </label>
+                            <div class="col-md-10 row">
+                                <div id="single" class="gallery">
+                                    <div class="listItems">
+                                    <div class="col-md-3">
+                                    <div class="image-box">
+                                                <img class="image-back" src="{{@$video_thumb}}">
+                                                <a href="#" class="select-image">Görsel Değiştir</a>
+                                                <input class="image-input d-none" accept="image/*" type="file"/>
+                                                <input type="hidden" value="{{@$video_thumb}}" name="video_thumb" class="targetInput">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                     <div class="m-portlet__foot m-portlet__foot--fit">
                         <div class="m-form__actions m-form__actions">
@@ -90,10 +146,14 @@
         </div>
     </div>
     <script src="{{asset("/js/imageUpload.js")}}" type="text/javascript"></script>
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 <script>
     jQuery(document).ready(function () {
-        imageUpload("#multi","imageurl_tr[]");
-        imageUpload("#multi2","imageurl_en[]");
+        imageUpload("#multi","slides_tr[][url]");
+        imageUpload("#multi_en","slides_en[][url]");
+    });
+    jQuery(document).ready(function () {
+        imageUpload("#single","admin_logo");
     });
 </script>
 @stop
