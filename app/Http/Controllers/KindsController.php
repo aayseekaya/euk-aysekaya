@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 use App\Kinds;
 use App\SubTypes;
 use App\Http\Controllers\BaseController;
@@ -16,17 +16,17 @@ class KindsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {  $result = Kinds::orderby("order","ASC")->get();
-    //    dd($result);
-        return view('kinds.list',["result"=>$result]);
-        //
+    {
+         $result = Kinds::orderby("order","ASC")->get();
+        return view('kinds.list');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function json(Request $request){
+        return Kinds::orderby("order","ASC")->get();
+    }
+    public function subtypesjson($kinds_id,Request $request){
+        return SubTypes::where("kinds_id",$kinds_id)->orderby("order","ASC")->get();
+    }
+   
     public function add()
     {   $result=[];
         return view("kinds.detail",["result"=>$result]);
@@ -34,6 +34,16 @@ class KindsController extends Controller
 
     public function addAction(Request $request){
         $arr = BaseController::requestToArr($request->all());
+        
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'description' => 'required',
+
+        ]);
+     
+        if ($validator->fails()) {
+            return redirect('/admin/kinds/add')->withErrors($validator)->withInput();
+        }
         $result = Kinds::create($arr);
         $id=DB::getPdo()->lastInsertId();
 
@@ -57,27 +67,21 @@ class KindsController extends Controller
         return view("kinds.detail",["result"=>$result]);
         
     }
-    // public function editAction($id,Request $request){
-    //     $arr = BaseController::requestToArr($request->all());
-    //     $result = Info2Model::find($id)->update($arr);
-    //     if(@$arr["imageurl_tr"]!=null) {
-    //         Info2ImageModel::where("item_id",$id)->where("lang","tr")->delete();
-    //         foreach ($arr["imageurl_tr"] as $key => $value) {
-    //             Info2ImageModel::create(["item_id"=>$id,"imageurl"=>$value,"lang"=>"tr"]);
-    //         }
-    //     }
-    //     if(@$arr["imageurl_en"]!=null) {
-    //         Info2ImageModel::where("item_id",$id)->where("lang","en")->delete();
-    //         foreach ($arr["imageurl_en"] as $key => $value) {
-    //             Info2ImageModel::create(["item_id"=>$id,"imageurl"=>$value,"lang"=>"en"]);
-    //         }
-    //     }
-    //     if($result) {
-    //         return Core::redirect("/admin/infos2","Bilgi Düzenlendi","success");
-    //     } else {
-    //         return Core::redirect("back","Bilgi Düzenlenemedi.","error");
-    //     }
-    // }
+    public function editAction($id,Request $request){
+        $arr = BaseController::requestToArr($request->all());
+        if(isset($request->imageUrl)) {
+         
+            $arr["imageUrl"] = $arr["imageUrl"];
+        }
+       
+        $result = Kinds::find($id)->update($arr);
+
+        if($result) {
+            return BaseController::redirect("/admin/kinds","Bilgi Düzenlendi","success");
+        } else {
+            return BaseController::redirect("back","Bilgi Düzenlenemedi.","error");
+        }
+    }
   /**
      * Show the form for editing the specified resource.
      *
@@ -105,12 +109,28 @@ class KindsController extends Controller
         return view("kinds.subdetail",["result"=>$result]);
         
     }
-    public function detailAction($id,Request $request){
+    public function detailAction($kinds_id,$id,Request $request){
         $arr = BaseController::requestToArr($request->all());
+
+        if($request->file("video")!=""){
+            $video = BaseController::uploadFile($request->file("video"));
+            if(isset($request->video)) {
+            
+                $arr["video"] = "http://127.0.0.1:8000".$video;
+            }
+        }
+        
+        if($request->file("product_receipt")!=""){
+            $product_receipt = BaseController::uploadFile($request->file("product_receipt"));
+            if(isset($request->product_receipt)) {
+            
+                $arr["product_receipt"] = "http://127.0.0.1:8000".$product_receipt;
+            }
+        }
         $result = SubTypes::find($id)->update($arr);
 
         if($result) {
-            return BaseController::redirect("/admin/kinds/$id","Bilgi Düzenlendi","success");
+            return BaseController::redirect("/admin/kinds/$kinds_id","Bilgi Düzenlendi","success");
         } else {
             return BaseController::redirect("back","Bilgi Düzenlenemedi.","error");
         }
@@ -126,6 +146,18 @@ class KindsController extends Controller
         
         $arr = BaseController::requestToArr($request->all());
         $arr["kinds_id"] = $kinds_id;
+        if(isset($request->imageUrl)) {
+         
+            $arr["imageUrl"] = $arr["imageUrl"];
+        }
+        if(isset($request->video)) {
+         
+            $arr["video"] = $arr["video"];
+        }
+        if(isset($request->video_thumb)) {
+         
+            $arr["video_thumb"] = $arr["video_thumb"];
+        }
         $result = SubTypes::create($arr);
         $id=DB::getPdo()->lastInsertId();
 

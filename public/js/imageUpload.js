@@ -56,7 +56,7 @@ var imageUpload = function (selector, name, url) {
             '   <img class="image-back" src="">\n' +
             '   <a href="#" class="close-button m-portlet__nav-link btn m-btn btn-secondary m-btn--icon-only m-btn--icon m-btn--pill"><i class="la la-close"></i></a>\n' +
             '   <a href="#" class="select-image">Resmi Değiştir</a>\n' +
-            '   <input class="image-input d-none" accept="image/*" type="file" />\n' +
+            '   <input  accept="image/*" type="file" />\n' +
             '   <input type="text" value="/upload/noimage.png" name="'+name+'" class="targetInput">\n' +
             '</div>\n' +
             '</div>';

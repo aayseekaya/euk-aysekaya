@@ -1,138 +1,150 @@
 @extends('_layouts.default')
 @section('content')
-    <div class="m-grid__item m-grid__item--fluid m-wrapper">
-        <div class="m-content">
-            <div class="m-portlet m-portlet--mobile">
-                <div class="m-portlet__head">
-                    <div class="m-portlet__head-caption">
-                        <div class="m-portlet__head-title">
-                            <h3 class="m-portlet__head-text">
-                                ÇEŞİTLERİMİZ
-                            </h3>
-                        </div>
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text">
+                             Çeşit
+                            <small>
+                                Listesi
+                            </small>
+                        </h3>
                     </div>
                 </div>
-                
-                <div class="m-portlet__body">
-                    {{ csrf_field() }}
-                    <div class="m-form m-form--label-align-right m--margin-bottom-30">
-                        <div class="row align-items-center">
-                            <div class="col-xl-8 order-2 order-xl-1">
-                                <div class="form-group m-form__group row align-items-center">
-                                    <div class="col-md-4">
-
+            </div>
+            <div class="m-portlet__body">
+                <!--begin: Search Form -->
+                <div class="m-form m-form--label-align-right m--margin-bottom-30">
+                    <div class="row align-items-center">
+                        <div class="col-xl-4 order-2 order-xl-1">
+                            <div class="form-group m-form__group row align-items-center">
+                                <div class="col-md-10">
+                                    <div class="m-input-icon m-input-icon--left">
+                                        <input type="text" class="form-control m-input" placeholder="Ara..." id="generalSearch">
+                                        <span class="m-input-icon__icon m-input-icon__icon--left">
+                                            <span>
+                                                <i class="la la-search"></i>
+                                            </span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4 order-1 order-xl-2 m--align-right">
-                                <a target="_blank" href="<?php echo env("APP_URL");?>/admin/kinds/export" class="btn btn-secondary m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
+                        </div>
+                        <div class="col-xl-8 order-1 order-xl-2 m--align-right top-buttons">
+                           
+                            <a href="<?php echo env("APP_URL");?>/admin/kinds/add" class="btn btn-primary m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
+                                <span>
+                                    <i class="flaticon-plus"></i>
                                     <span>
-                                        <div class="login login_in"></div>
-                                        <span>
-                                            Aktivite Katılım Listesi
-                                        </span>
+                                        Yeni Kayıt
                                     </span>
-                                </a>
-                                <a href="{{env("APP_URL")}}/admin/kinds/add" class="btn btn-primary m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
-                                    <span>
-                                        <i class="flaticon-plus"></i>
-                                        <span>
-                                            Yeni Bilgi
-                                        </span>
-                                    </span>
-                                </a>
-
-                                
-                                <div class="m-separator m-separator--dashed d-xl-none"></div>
-                            </div>
-                            
+                                </span>
+                            </a>
+                            <div class="m-separator m-separator--dashed d-xl-none"></div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="m-portlet m-portlet--full-height ">
-                                <div class="m-portlet__head">
-                                    <div class="m-portlet__head-caption">
-                                        <div class="m-portlet__head-title" style="width: 100%">
-                                            <h3 class="m-portlet__head-text" >
-                                                Bilgiler
-                                                <small style="float: right">
-                                                    <i class="la la-arrows"></i> Mouse ile sürükle bırak sıralayınız
-                                                </small>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="m-portlet__body" style="padding: 0;">
-                                    <ol class="list sortable">
-                                        <?php
-                                        foreach ($result as $key => $value) {
-                                        ?>
-                                        <li id="list_<?php echo $value['id']; ?>">
-                                            <strong class="item-move"><a href="#" class=" m-portlet__nav-link btn m-btn btn-secondary m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-arrows"></i></a></strong>
-                                            <span><?php echo $value["name"];?></span>
-                                            <div class="islem">
-                                                @if($value["app_show"]==1)
-                                                    <a href="#" class="delete-button m-portlet__nav-link btn m-btn btn-secondary m-btn--icon m-btn--icon-only m-btn--pill"><i class="fa fa-mobile-phone"></i></a>
-                                                @endif
-                                                @if($value["admin_show"]==1)
-                                                    <a href="#" class="delete-button m-portlet__nav-link btn m-btn btn-secondary m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-laptop"></i></a>
-                                                @endif
-
-                                                <a href="<?php echo env("APP_URL")."/admin/kinds/".$value["id"];?>" class="edit-button m-portlet__nav-link btn m-btn btn-primary m-btn--icon m-btn--icon-only m-btn--pill"><i><i class="la la-share-square"></i></i></a>  
-                                                <a href="<?php echo env("APP_URL")."/admin/kinds/edit/".$value["id"];?>" class="edit-button m-portlet__nav-link btn m-btn btn-primary m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
-                                                <a href="<?php echo env("APP_URL")."/admin/kinds/delete/".$value["id"];?>" class="delete-button m-portlet__nav-link btn m-btn btn-danger m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-trash"></i></a>
-                                            </div>
-                                        </li>
-                                        <?php } ?>
-                                    </ol>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
                 </div>
+                <!--end: Search Form -->
+                <!--begin: Datatable -->
+                <div class="m_datatable"></div>
+                <!--end: Datatable -->
+
             </div>
         </div>
     </div>
+</div>
+<script>
+    var datatable = $('.m_datatable').mDatatable({
+        // datasource definition
+        data: {
+            type: 'remote',
+            source: {
+                read: {
+                    url: '/admin/kinds/json'
+                }
+            },
+            pageSize: 20, // display 20 records per page
+            serverPaging: false,
+            serverFiltering: false,
+            serverSorting: false,
+        },
 
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
-    <script src="{{asset("/js/nestedSortable.min.js")}}" type="text/javascript"></script>
-    <script src="{{asset("/js/imageUpload.js")}}" type="text/javascript"></script>
+        // layout definition
+        layout: {
+            theme: 'default',
+            class: '',
+            scroll: true,
+            height: 550,
+            footer: false
+        },
 
-    <script>
-        jQuery(document).ready(function(){
-            imageUpload("#single","imageurl");
-            shortFunc($('.sortable'),'/admin/kinds/order');
-            function shortFunc (element, url) {
-                element.nestedSortable({
-                    axis: 'y',
-                    opacity: 0.7,
-                    handle: 'strong',
-                    items: 'li',
-                    maxLevels: 1,
-                    dropOnEmpty: true,
-                    tree: true,
-                    update: function(event, ui) {
-                        var formDataOrder = new FormData();
-                        formDataOrder.append("list_order", JSON.stringify($(this).nestedSortable('toArray')));
-                        formDataOrder.append("_token", $('input[name=_token]').val());
-                        $.ajax({
-                            url: url,
-                            type: 'POST',
-                            data: formDataOrder,
-                            contentType: false,
-                            processData: false,
-                            success: function(response) {
-                                console.log(response);
-                            }
-                        });
-                    }
-                }); // fin sortable
+        // column sorting
+        sortable: true,
+
+        // toolbar
+        toolbar: {
+            // toolbar placement can be at top or bottom or both top and bottom repeated
+            placement: ['bottom'],
+
+            // toolbar items
+            items: {
+                // pagination
+                pagination: {
+                    // page size select
+                    pageSizeSelect: [20, 30, 50] // display dropdown to select pagination size. -1 is used for "ALl" option
+                },
             }
+        },
+
+        search: {
+            input: $('#generalSearch')
+        },
+
+        // columns definition
+        columns: [{
+            field: "id",
+            title: "#",
+            sortable: false, // disable sort for this column
+            width: 20,
+            locked: {left: 'xl'},
+            selector: {class: 'm-checkbox--solid m-checkbox--brand'}
+        },{
+            field: "name",
+            title: "Tür Adı"
+        },{
+            field: "Actions",
+            width: 250,
+            title: "İşlemler",
+            locked: {right: 'xl'},
+            overflow: 'visible',
+            template: function (row, index, datatable) {
+                var dropup = (datatable.getPageSize() - index) <= 4 ? 'dropup' : '';
+                return 	'<a href="<?php echo env("APP_URL");?>/admin/kinds/'+row.id+'"class="edit-button m-portlet__nav-link btn m-btn btn-primary m-btn--icon m-btn--icon-only m-btn--pill"><i><i class="la la-share-square"></i></a> '+
+                        '<a href="<?php echo env("APP_URL");?>/admin/kinds/edit/'+row.id+'" class="m-portlet__nav-link btn btn-secondary m-btn  m-btn--hover-primary m-btn--icon m-btn--pill" title="Edit details"><span><i class="la la-edit"></i><span>Düzenle</span></span></a> &nbsp; &nbsp;'+
+						'<a href="<?php echo env("APP_URL");?>/admin/kinds/delete/'+row.id+'" class="delete-button btn btn btn-danger m-btn m-portlet__nav-link m-btn--icon m-btn--icon-only m-btn--pill" title="Delete"><i class="la la-trash"></i></a>';
+            }
+        }]
+    });
+
+
+
+    $('#m_datatable_reload').on('click', function () {
+        datatable.reload();
+    });
+    $(document).on("click", "#deleteAll", function(e) {
+        e.preventDefault();
+        var cbArr = [];
+        var selectedRows = datatable.getSelectedRecords();
+        var $cbAnswer = $(selectedRows).find(".m-checkbox > [type='checkbox']");
+        $cbAnswer.each(function(i) {
+            var id = $(this).val();
+            cbArr.push(id);
         });
-    </script>
+        console.log(cbArr);
+    });
+
+</script>
 @stop

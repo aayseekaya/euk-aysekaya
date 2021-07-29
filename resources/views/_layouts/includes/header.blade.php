@@ -109,51 +109,20 @@
                                     <div class="m-dropdown__wrapper">
                                         <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
                                         <div class="m-dropdown__inner">
-                                            {{--<div class="m-dropdown__header m--align-center" style="background: #5766dd">
-														<span class="m-dropdown__header-title">
-															Hızlı Menü
-														</span>
-                                                <span class="m-dropdown__header-subtitle">
-															Shortcuts
-														</span>
-                                            </div>--}}
+                                            
                                             <div class="m-dropdown__body m-dropdown__body--paddingless">
                                                 <div class="m-dropdown__content">
                                                     <div class="m-scrollable" data-scrollable="false" data-max-height="100" data-mobile-max-height="200">
                                                         <div class="m-nav-grid m-nav-grid--skin-light">
-                                                            @if(session("company_id") != "-1")
                                                             <div class="m-nav-grid__row">
-                                                            	
-                                                                <a href="<?php echo env("APP_URL");?>/admin/events/" class="m-nav-grid__item">
-                                                                    <i class="m-nav-grid__icon flaticon-calendar-3"></i>
-                                                                    <span class="m-nav-grid__text">
-																				Etkinlikler
-																	</span>
-                                                                </a>
-                                                                <a href="#" class="m-nav-grid__item" data-toggle="modal" data-target="#m_modal_6">
-                                                                    <i class="m-nav-grid__icon flaticon-refresh"></i>
-                                                                    <span class="m-nav-grid__text">
-																				Etkinlik Değiştir
-																	</span>
-                                                                </a>
-
-                                                            </div>
-                                                            @endif
-                                                            <div class="m-nav-grid__row">
-                                                                     <a href="<?php echo env("APP_URL");?>/admin/events/edit/{{session("event_id")}}" class="m-nav-grid__item" >
-                                                                    <i class="m-nav-grid__icon flaticon-cogwheel-2"></i>
-                                                                    <span class="m-nav-grid__text">
-																				Ayarlar
-																	</span>
-                                                                </a>
-                    
                                                                 <a href="<?php echo env("APP_URL")."/admin/logout";?>" class="m-nav-grid__item">
-                                                                    <i class="m-nav-grid__icon flaticon-logout"></i>
-                                                                    <span class="m-nav-grid__text">
-																				Çıkış
-																	</span>
-                                                                </a>
-                                                            </div>
+                                                                <i class="m-nav-grid__icon flaticon-logout"></i>
+                                                                <span class="m-nav-grid__text">
+                                                                            Çıkış
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                          
                                                         </div>
                                                     </div>
                                                 </div>

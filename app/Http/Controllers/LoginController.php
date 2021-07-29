@@ -21,11 +21,9 @@ class LoginController extends Controller
     }
 
     public function loginSubmit(Request $request){
-
-
-
+    
         $result = User::where("email",$request->email)->where("password",md5($request->password))->first();
-
+        session(["is_login"=>true]);
         if($result) {
             $result = Kinds::orderby("order","ASC")->get();
             return view('kinds.list',["result"=>$result]);
@@ -33,5 +31,8 @@ class LoginController extends Controller
             return BaseController::redirect("back","Giriş Yapılamadı","error");
         }
     }
-
+    public function logout(Request $request){
+         session(["is_login"=>false]);
+        return BaseController::redirect("/");
+    }
 }

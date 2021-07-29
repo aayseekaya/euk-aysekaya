@@ -18,6 +18,7 @@ class CreateSubtypesTable extends Migration
             $table->string('name');
             $table->string('title');
             $table->string('imageUrl');
+            $table->string('product_receipt');
             $table->string('video_thumb');
             $table->string('video');
             $table->text('content');

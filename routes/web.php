@@ -15,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 //login
 Route::get('/', 'LoginController@index');
 Route::post('/', 'LoginController@loginSubmit');
+Route::get('/admin/logout', 'LoginController@logout');
 
 //kinds
 Route::get('admin/kinds', 'KindsController@index');
+Route::get('/admin/kinds/json', 'KindsController@json');
 Route::get('admin/kinds/edit/{id}', 'KindsController@edit')->where('id', '[0-9]+');
 Route::post('admin/kinds/edit/{id}', 'KindsController@editAction')->where('id', '[0-9]+');
 Route::get('admin/kinds/add', 'KindsController@add');
@@ -33,4 +35,6 @@ Route::get('admin/kinds/{id}', 'KindsController@detail')->where('id', '[0-9]+');
 
 Route::post('admin/kinds/order', 'KindsController@orderAction');
 Route::post('admin/subtypes/order', 'KindsController@subtypesOrderAction');
+
+Route::get('/admin/subtypes/json/{id}', 'KindsController@subtypesjson');
 Route::post('/admin/general/upload', 'BaseController@upload');

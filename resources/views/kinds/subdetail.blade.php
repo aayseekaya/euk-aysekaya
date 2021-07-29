@@ -16,7 +16,21 @@
     ?>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <div class="m-grid__item m-grid__item--fluid m-wrapper">
+        @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
         <div class="m-content">
             <!--begin::Portlet-->
             <div class="m-portlet">
@@ -119,64 +133,42 @@
                                 </div>
                             </div>
                         </div>
-                                     
+                      <div class="form-group m-form__group row">
+                        <label for="upload_file" class="control-label col-md-2">
+                            Ürün Fişi
+                        </label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="file" name="product_receipt" id="upload_file">
+                            <p>Ürün Fişini indirmek için<a href="{{@$result['product_receipt']}}"> tıklayınız.</a></p> 
+                        </div>
+                    </div>
 
                     <div class="form-group m-form__group row">
-                            <label class="col-form-label col-md-2">
-                                Video Thumb
-                            </label>
-                            <div class="col-md-10 row">
-                                <div id="single" class="gallery">
-                                    <div class="listItems">
-                                        <div class="col-md-3">
-                                            <div class="image-box">
-                                                        <img class="image-back" src="{{@$result['video_thumb']}}">
-                                                        <a href="#" class="select-image">Görsel Değiştir</a>
-                                                        <input class="image-input d-none" accept="image/*" type="file"/>
-                                                        <input type="hidden" value="{{@$result['video_thumb']}}" name="video_thumb" class="targetInput">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <label for="upload_file" class="control-label col-md-2">
+                        Video
+                        </label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="file" name="video" id="upload_file">
+                        </div>
                     </div>
+                    @if(@$result['video'] and @$result["video_thumb"] )         
                     <div class="form-group m-form__group row">
-                            <label class="col-form-label col-md-2">
-                                Video
-                            </label>
-                            <div class="col-md-10 row">
-                                <div id="single" class="gallery">
-                                    <div class="listItems">
-                                        <div class="col-md-3">
-                                         <div class="image-box">
-                                                    <img class="image-back" src="{{@$result['video']}}">
-                                                    <a href="#" class="select-image">Video Değiştir</a>
-                                                    <input class="image-input d-none" accept="video/*" type="file"/>
-                                                    <input type="hidden" value="{{@$result['video']}}" name="video" class="targetInput">
-                                                </div>
-                                                
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                    <?php if(@$result["media_thumb"] != "" && @$result["video"] != "") {?>
-                            <div class="form-group m-form__group row">
-                                <label for="example-url-input" class="col-md-2 col-form-label">
-                                    Video Önizleme
-                                </label>
-                                <div class="col-md-8">
-                                    <div class="embed-responsive embed-responsive-16by9">
-                                        <video id="video" width="400px" class="embed-responsive-item" style="max-width:100%;" poster="{!! @$result["media_thumb"] !!}" preload="none" controls playsinline webkit-playsinline
-                                               preload="auto" controlsList="nodownload noremoteplayback">
-                                            <source src="{{asset(@$result["video"])}}" type="video/mp4" codecs="avc1.4D401E, mp4a.40.2">
-                                        </video>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php } ?>
+                        <label for="example-url-input" class="col-md-2 col-form-label">
+                            Video Önizleme
+                        </label>
+                        
+                        <div class="col-md-8">
+                            
+                            <video id="video" width="400px" style="max-width:100%;" poster="<?php echo @$result["video_thumb"];?>" preload="none" controls playsinline webkit-playsinline>
+                                <source src="{{asset(@$result["video"])}}" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>      
+                    @endif
 
-                    <div class="m-portlet">
+                
+                
+                        <div class="m-portlet">
                     <div class="m-portlet__head">
                         <div class="m-portlet__head-caption">
                             <div class="m-portlet__head-title">
@@ -204,7 +196,7 @@
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="tuber_color" value="{{@$result['tuber_color']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
@@ -215,7 +207,7 @@
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="tuber_shell" value="{{@$result['tuber_shell']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
@@ -226,7 +218,7 @@
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="dry_matter_ratio" value="{{@$result['dry_matter_ratio']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
@@ -237,7 +229,7 @@
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="bump_feature" value="{{@$result['bump_feature']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
@@ -248,7 +240,7 @@
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="eye_depth" value="{{@$result['eye_depth']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
@@ -259,7 +251,7 @@
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="bump_size" value="{{@$result['bump_size']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
@@ -270,7 +262,7 @@
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="productivity" value="{{@$result['productivity']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
@@ -291,51 +283,51 @@
                         </div>
                     </div>
 
+                    
                     <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">
-                                Kullanım
+                              olgunluk Dönemi
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="use" value="{{@$result['use']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="maturity_period" value="{{@$result['maturity_period']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
                     </div>
                     <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">
-                                Yumru Et Rengi
+                                Çiçeklenme Aralığı
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="flowering_ınterval" value="{{@$result['flowering_ınterval']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
                     </div>
                     <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">
-                                Yumru Kabuk
+                                Çiçek Rengi
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="flower_color" value="{{@$result['flower_color']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
                     </div>
                     <div class="form-group m-form__group row">
-                            <label class="col-form-label col-md-2">
-                                Kuru Madde Oranı
-                            </label>
-                            <div class="col-md-10">
-                                <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
-                                
-                                </div>
+                        <label class="col-form-label col-md-2">
+                            Yeşil Akşam Yoğunluğu
+                        </label>
+                        <div class="col-md-10">
+                            <div class="m-input-icon m-input-icon--left ">
+                                <input type="text" name="green_evening_ıntensity" value="{{@$result['green_evening_ıntensity']}}" class="form-control m-input" placeholder="Başlık">
+                            
                             </div>
-                    </div>
-                 
+                        </div>
+                </div>
 
 
 
@@ -352,94 +344,106 @@
 
                     <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">
-                                Kullanım
+                               Geç Yanıklığı
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="use" value="{{@$result['use']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="late_blight" value="{{@$result['late_blight']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
                         </div>
                         <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">
-                                Yumru Et Rengi
+                                Kuru Çürülüğü
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="dry_rot" value="{{@$result['dry_rot']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
                         </div>
                         <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">
-                                Yumru Kabuk
+                                Yn-Virüsü
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="yn_virus" value="{{@$result['yn_virus']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
                         </div>
                         <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">
-                                Kuru Madde Oranı
+                               Yntn virüsü
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="yntn_virus" value="{{@$result['yntn_virus']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
                         </div>
                         <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">
-                                Yumru Özelliği
+                                Virüs X
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="virüs_x" value="{{@$result['virüs_x']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
                         </div>
                         <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">
-                                Göz Rengi
+                                <Table>
+                                    Tütün Halka virüsü
+                                </Table>
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="tobacco_ring_virus" value="{{@$result['tobacco_ring_virus']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
                         </div>
                         <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">
-                                Yumru Boyutu
+                                Altın Kist Nematodu
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="golden_cyst_nematode" value="{{@$result['golden_cyst_nematode']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
                         </div>
                         <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">
-                               Verimlilik
+                                R01 ve R04
                             </label>
                             <div class="col-md-10">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <input type="text" name="title" value="{{@$result['title']}}" class="form-control m-input" placeholder="Başlık">
+                                    <input type="text" name="ro1_and_ro4" value="{{@$result['ro1_and_ro4']}}" class="form-control m-input" placeholder="Başlık">
                                 
                                 </div>
                             </div>
                         </div>
 
-
+                        <div class="form-group m-form__group row">
+                            <label class="col-form-label col-md-2">
+                               Beyaz Nematod
+                            </label>
+                            <div class="col-md-10">
+                                <div class="m-input-icon m-input-icon--left ">
+                                    <input type="text" name="white_nematode" value="{{@$result['white_nematode']}}" class="form-control m-input" placeholder="Başlık">
+                                
+                                </div>
+                            </div>
+                        </div>
 
 
 

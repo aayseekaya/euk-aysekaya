@@ -13,13 +13,15 @@ class KindsSeeder extends Seeder
     public function run()
     { Kinds::create([
         'name'    => "Yemeklik",
-        'imageUrl'    => "asdfghgfd",
+        'description'=>"Yemeklik patates tohumu çeşitlerimizi inceleyiniz.",
+        'imageUrl'    => 'http://127.0.0.1:8000/images/672042865206.png',
         'order'   => "1",
     ]);
     Kinds::create(
     [
         'name'    => "Parmak Patates ve Cips",
-        'imageUrl'    => "asdfgff",
+        'description'=>"Parmak patates ve cips tohumu çeşitlerimizi inceleyiniz.",
+        'imageUrl'    => "http://127.0.0.1:8000/images/672042865206.png",
         'order'   => "2",
     ]);
     }

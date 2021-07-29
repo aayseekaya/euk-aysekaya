@@ -33,15 +33,6 @@ $url = $urlArr[0];
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
             </li>
-            <li class="m-menu__item ?>">
-                <a  href="<?php echo env("APP_URL")."/panel"?>" class="m-menu__link m-menu__toggle">
-                <i class="bi bi-collection"></i>
-                    <span class="m-menu__link-text">
-						<?php echo "ÇEŞİTLERİMİZ2";?>
-					</span>
-                    <i class="m-menu__ver-arrow la la-angle-right"></i>
-                </a>
-            </li>
         </ul>
     </div>
 </div>

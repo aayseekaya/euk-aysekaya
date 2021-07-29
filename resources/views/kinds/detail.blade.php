@@ -16,7 +16,21 @@
     ?>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <div class="m-grid__item m-grid__item--fluid m-wrapper">
+        @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
         <div class="m-content">
             <!--begin::Portlet-->
             <div class="m-portlet">
@@ -51,21 +65,25 @@
                             </label>
                             <div class="col-lg-10 col-md-9 col-sm-12">
                                 <div class="m-input-icon m-input-icon--left ">
-                                    <textarea name="content" rows="6" placeholder="Açıklama" class="form-control col-md-12"><?php echo @$result["content"]?></textarea>
+                                    <textarea name="description" rows="6" placeholder="Açıklama" class="form-control col-md-12"><?php echo @$result["description"]?></textarea>
                                     
                                 </div>
                             </div>
                         </div>
+                   
+                    
                         <div class="form-group m-form__group row">
-                            <label class="col-form-label col-md-2">
-                                Türkçe
-                            </label>
+                            <label class="col-form-label col-md-2">  Resim </label>
                             <div class="col-md-10 row">
-                                <div id="multi" class="gallery">
-                                   
-                                    <div class="col-md-3">
-                                        <div class="image-box-add">
-                                            <a href="#" class="add-image-button m-portlet__nav-link btn m-btn btn-primary m-btn--icon m-btn--pill"><i class="la la-plus"></i> Resim Ekle</a>
+                                <div id="single" class="gallery">
+                                    <div class="listItems">
+                                        <div class="col-md-3">
+                                            <div class="image-box">
+                                                <img class="image-back" src="{{@$result['imageUrl']}}">
+                                                <a href="#" class="select-image">Resmi Değiştir</a>
+                                                <input class="image-input d-none" accept="image/*" type="file"/>
+                                                <input type="hidden" value="{{@$result['imageUrl']}}" name="imageUrl" class="targetInput">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -90,10 +108,13 @@
         </div>
     </div>
     <script src="{{asset("/js/imageUpload.js")}}" type="text/javascript"></script>
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 <script>
     jQuery(document).ready(function () {
-        imageUpload("#multi","imageurl_tr[]");
-        imageUpload("#multi2","imageurl_en[]");
+        imageUpload("#multi","slides_tr[][url]");
+    });
+    jQuery(document).ready(function () {
+        imageUpload("#single","admin_logo");
     });
 </script>
 @stop

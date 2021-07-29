@@ -14,9 +14,10 @@ class SubTypesSeeder extends Seeder
         SubTypes::create([
             "name"=>"Anuscka",
             "title"=>"FONTANE pazarlanabilir yüksek verimli, orta geççi, parmak patates ve cipse uygun bir çeşittir.",
-            "imageUrl"=>"",
-            "video_thumb"=>"",
-            "video"=>"",
+            "imageUrl"=>"http://127.0.0.1:8000/images/366843200991.png",
+            "product_receipt"=>"http://127.0.0.1:8000/images/814657635990.pdf",
+            "video_thumb"=>"http://127.0.0.1:8000/images/65028677683.jpg",
+            "video"=>"http://127.0.0.1:8000/images/810107092039.mp4",
             "content"=>"Düşük şeker içeriğiyle iyi işleme kalitesine sahiptir.
             Kuru madde oranı yüksek ve tüm toprak yapılarında yetişme özelliğine sahiptir.
             Yumrular uzun oval homojen dağılımlı yumru sayısı ve verimi yüksek bir çeşittir.",
@@ -29,7 +30,7 @@ class SubTypesSeeder extends Seeder
             "bump_size"=>"Oval",
             "productivity"=>"Çok yüksek pazarlanabilir verim",
             "maturity_period"=>"Pazarlanabilir, yüksek verimli, parmak patates için uygun",
-            "flowering_ınterval"=>"çık sarı",
+            "flowering_ınterval"=>"Açık sarı",
             "flower_color"=>"Sarı",
             "green_evening_ıntensity"=>"Oldukça",
 
@@ -59,9 +60,10 @@ class SubTypesSeeder extends Seeder
         [
             "name"=>"Fantone",
             "title"=>"FONTANE pazarlanabilir yüksek verimli, orta geççi, parmak patates ve cipse uygun bir çeşittir.",
-            "imageUrl"=>"",
-            "video_thumb"=>"",
-            "video"=>"",
+            "imageUrl"=>"http://127.0.0.1:8000/images/366843200991.png",
+            "product_receipt"=>"http://127.0.0.1:8000/images/814657635990.pdf",
+            "video_thumb"=>"http://127.0.0.1:8000/images/65028677683.jpg",
+            "video"=>"http://127.0.0.1:8000/images/810107092039.mp4",
             "content"=>"Düşük şeker içeriğiyle iyi işleme kalitesine sahiptir.
             Kuru madde oranı yüksek ve tüm toprak yapılarında yetişme özelliğine sahiptir.
             Yumrular uzun oval homojen dağılımlı yumru sayısı ve verimi yüksek bir çeşittir.",
