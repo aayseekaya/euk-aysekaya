@@ -1,7 +1,8 @@
-![alt text](https://github.com/aayseekaya/euk-aysekaya/tree/main/public/images/1.PNG?raw=true)
-![alt text](https://github.com/aayseekaya/euk-aysekaya/tree/main/public/images/2.PNG?raw=true)
-![alt text](https://github.com/aayseekaya/euk-aysekaya/tree/main/public/images/3.PNG?raw=true)
-![alt text](https://github.com/aayseekaya/euk-aysekaya/tree/main/public/images/4-1.PNG?raw=true)
+![alt text](https://github.com/aayseekaya/euk-aysekaya/blob/main/public/images/1.PNG)
+![alt text](https://github.com/aayseekaya/euk-aysekaya/blob/main/public/images/2.PNG)
+![alt text](https://github.com/aayseekaya/euk-aysekaya/blob/main/public/images/3.PNG)
+![alt text](https://github.com/aayseekaya/euk-aysekaya/blob/main/public/images/4-1.PNG)
+
 #Local DB de laravel adında database oluşturulmalı
  
 #Kurulum
