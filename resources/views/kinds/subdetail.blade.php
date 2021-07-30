@@ -2,12 +2,12 @@
 @section('content')
     <?php
     if(isset($result["id"])) {
-        $title = "Çeşit Düzenle";
+        $title = "Ürün Düzenle";
         $startDate = date("Y.m.d H:i", strtotime(@$result["startdate"]));
         $endDate = date("Y.m.d H:i", strtotime(@$result["enddate"]));
         $images = $result['images'];
     } else {
-        $title = "Çeşit Ekle";
+        $title = "Ürün Ekle";
         $startDate = date("Y.m.d H:i");
         $endDate = date("Y.m.d H:i");
 
