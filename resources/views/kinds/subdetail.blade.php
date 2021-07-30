@@ -76,40 +76,40 @@
                             </label>
                             <div class="col-lg-10 col-md-10 col-sm-12">
                                 <div class="m-input-icon m-input-icon--left ">
-                                <textarea name="content" rows="6" placeholder="Açıklama" class="form-control col-md-12 ckeditor"><?php echo @$result["content"]?></textarea>
+                                <textarea name="content" rows="6" class="form-control col-md-12 ckeditor"><?php echo @$result["content"]?></textarea>
                                 </div>
                             </div>
 
                         </div>
                         <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">
-                            Açıklama
+                            Dormansi Süreci
                             </label>
                             <div class="col-lg-10 col-md-10 col-sm-12">
                                 <div class="m-input-icon m-input-icon--left ">
-                                <textarea name="dormancy_process" rows="6" placeholder="Açıklama" class="form-control col-md-12 ckeditor"><?php echo @$result["dormancy_process"]?></textarea>
+                                <textarea name="dormancy_process" rows="6" class="form-control col-md-12 ckeditor"><?php echo @$result["dormancy_process"]?></textarea>
                                 </div>
                             </div>
 
                         </div>
                         <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">
-                            Açıklama
+                            Dikim Önerileri
                             </label>
                             <div class="col-lg-10 col-md-10 col-sm-12">
                                 <div class="m-input-icon m-input-icon--left ">
-                                <textarea name="planting_suggestions" rows="6" placeholder="Açıklama" class="form-control col-md-12 ckeditor"><?php echo @$result["planting_suggestions"]?></textarea>
+                                <textarea name="planting_suggestions" rows="6" class="form-control col-md-12 ckeditor"><?php echo @$result["planting_suggestions"]?></textarea>
                                 </div>
                             </div>
 
                         </div>
                     <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">
-                                Anket Sırası
+                                 Sırası
                             </label>
                             <div class="col-md-4">
                                 <div>
-                                    <input type="text" name="order" value="{{@$result['order']}}" class="form-control m-input" placeholder="Anket Adı">
+                                    <input type="text" name="order" value="{{@$result['order']}}" class="form-control m-input" placeholder="Sırası">
                                 </div>
                             </div>
                         </div>

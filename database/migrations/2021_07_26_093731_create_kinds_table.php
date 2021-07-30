@@ -16,9 +16,9 @@ class CreateKindsTable extends Migration
         Schema::create('kinds', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('imageUrl');
-            $table->string('order');
+            $table->string('order')->default("0");
             $table->timestamps();
         });
     }

@@ -70,7 +70,17 @@
                                 </div>
                             </div>
                         </div>
-                   
+                        <div class="form-group m-form__group row">
+                            <label class="col-form-label col-md-2">
+                                Sırası
+                            </label>
+                            <div class="col-md-4">
+                                <div>
+                                    <input type="text" name="order" value="{{@$result['order']}}" class="form-control m-input" placeholder="Anket Adı">
+                                </div>
+                            </div>
+                        </div>
+
                     
                         <div class="form-group m-form__group row">
                             <label class="col-form-label col-md-2">  Resim </label>

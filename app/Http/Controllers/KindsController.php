@@ -34,12 +34,15 @@ class KindsController extends Controller
 
     public function addAction(Request $request){
         $arr = BaseController::requestToArr($request->all());
-        
+        $messages = [
+            'name.required'  => 'İsim alanını boş bırakmayınız.',
+            'imageUrl.required'  => 'Resim alanını boş bırakmayınız.',
+        ];
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'description' => 'required',
+            'imageUrl' => 'required',
 
-        ]);
+        ],$messages);
      
         if ($validator->fails()) {
             return redirect('/admin/kinds/add')->withErrors($validator)->withInput();
@@ -54,21 +57,28 @@ class KindsController extends Controller
         }
     }
 
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
-    {        $result = Kinds::where("id",$id)->first();
+    {   
+             $result = Kinds::where("id",$id)->first();
 
         return view("kinds.detail",["result"=>$result]);
         
     }
     public function editAction($id,Request $request){
         $arr = BaseController::requestToArr($request->all());
+        $messages = [
+            'name.required'  => 'İsim alanını boş bırakmayınız.',
+            'imageUrl.required'  => 'Resim alanını boş bırakmayınız.',
+        ];
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'imageUrl' => 'required',
+
+        ],$messages);
+     
+        if ($validator->fails()) {
+            return redirect('/admin/kinds/add')->withErrors($validator)->withInput();
+        }
         if(isset($request->imageUrl)) {
          
             $arr["imageUrl"] = $arr["imageUrl"];
@@ -82,26 +92,22 @@ class KindsController extends Controller
             return BaseController::redirect("back","Bilgi Düzenlenemedi.","error");
         }
     }
-  /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function delete($id) {
+        $result = Kinds::destroy([$id]);
+        if($result) {
+            return BaseController::redirect("back","Bilgi Silindi.","success");
+        } else {
+            return BaseController::redirect("back","Bilgi Silinemedi.","error");
+        }
+    }
     public function detail($kinds_id)
-
     {   $kinds = SubTypes::where("kinds_id",$kinds_id)->orderby("order","ASC")->get();
         $result["kinds_id"] = $kinds_id;
         $result["items"] = $kinds;
         return view("kinds.sublist",["result"=>$result]);
         
     }
-      /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+      
     public function detailEdit($kinds_id,$id)
     {   
         $result = SubTypes::where("id",$id)->first();
@@ -111,7 +117,24 @@ class KindsController extends Controller
     }
     public function detailAction($kinds_id,$id,Request $request){
         $arr = BaseController::requestToArr($request->all());
+        $messages = [
+            'name.required'  => 'İsim alanını boş bırakmayınız.',
+            'imageUrl.required'  => 'Resim alanını boş bırakmayınız.',
+            'content.required'  => 'Açıklama alanını boş bırakmayınız.',
+            'use.required'  => 'Kullanım alanını boş bırakmayınız.',
+        ];
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'imageUrl' => 'required',
+            'content' => 'required',
+            'use' => 'required'
 
+            ],$messages
+        );
+        
+        if ($validator->fails()) {
+            return redirect("/admin/kinds/$kinds_id/add")->withErrors($validator)->withInput();
+        }
         if($request->file("video")!=""){
             $video = BaseController::uploadFile($request->file("video"));
             if(isset($request->video)) {
@@ -136,28 +159,41 @@ class KindsController extends Controller
         }
     }
 
-
     public function detailAdd($kinds_id,Request $request)
     {   $result=[];
         return view("kinds.subdetail",["result"=>$result]);
     }
-
+    public function detailDelete($kinds_id,$id) {
+        $result = SubTypes::destroy([$id]);
+        if($result) {
+            return BaseController::redirect("back","Bilgi Silindi.","success");
+        } else {
+            return BaseController::redirect("back","Bilgi Silinemedi.","error");
+        }
+    }
     public function detailAddAction($kinds_id,Request $request){
         
         $arr = BaseController::requestToArr($request->all());
         $arr["kinds_id"] = $kinds_id;
-        if(isset($request->imageUrl)) {
-         
-            $arr["imageUrl"] = $arr["imageUrl"];
+        $messages = [
+            'name.required'  => 'İsim alanını boş bırakmayınız.',
+            'imageUrl.required'  => 'Resim alanını boş bırakmayınız.',
+            'content.required'  => 'Açıklama alanını boş bırakmayınız.',
+            'use.required'  => 'Kullanım alanını boş bırakmayınız.',
+        ];
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'imageUrl' => 'required',
+            'content' => 'required',
+            'use' => 'required'
+
+            ],$messages
+        );
+        
+        if ($validator->fails()) {
+            return redirect("/admin/kinds/$kinds_id/add")->withErrors($validator)->withInput();
         }
-        if(isset($request->video)) {
-         
-            $arr["video"] = $arr["video"];
-        }
-        if(isset($request->video_thumb)) {
-         
-            $arr["video_thumb"] = $arr["video_thumb"];
-        }
+
         $result = SubTypes::create($arr);
         $id=DB::getPdo()->lastInsertId();
 

@@ -9,13 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script src="https://api.ibb.gov.tr/gencligimizvar-api/ckeditor/ckeditor.js"></script>
-    <script src="https://api.ibb.gov.tr/gencligimizvar-api/ckeditor/samples/js/sample.js"></script>
+    <script src="http://127.0.0.1:8000/ckeditor/ckeditor.js"></script>
+    <script src="http://127.0.0.1:8000/ckeditor/samples/js/sample.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
     <script src="/js/app.js"></script>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://api.ibb.gov.tr/gencligimizvar-api/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css">
     
     <script>
         WebFont.load({

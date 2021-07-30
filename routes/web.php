@@ -31,6 +31,7 @@ Route::post('admin/kinds/{kinds_id}/edit/{id}', 'KindsController@detailAction')-
 Route::get('admin/kinds/{kinds_id}/add', 'KindsController@detailAdd')->where('id', '[0-9]+');
 Route::post('admin/kinds/{kinds_id}/add', 'KindsController@detailAddAction')->where('id', '[0-9]+');
 Route::get('admin/kinds/{id}', 'KindsController@detail')->where('id', '[0-9]+');
+Route::get('admin/kinds/{kinds_id}/delete/{id}', 'KindsController@detailDelete')->where('id', '[0-9]+');
 
 
 Route::post('admin/kinds/order', 'KindsController@orderAction');
