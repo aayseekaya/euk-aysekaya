@@ -16,7 +16,7 @@
 
 
 #Local DB de laravel adında database oluşturulmalı
- 
+
 #Kurulum
  
 ```
@@ -36,3 +36,6 @@ php artisan migrate:refresh --seed
 ```
 php artisan serve
 ```
+ 
+#kullanıcı adı: ayse@hotmail.com
+#sifre: 123
